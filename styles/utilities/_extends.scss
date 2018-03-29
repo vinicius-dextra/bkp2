@@ -1,0 +1,40 @@
+//
+// PROPERTIES
+//
+
+%grade-text-transform-uppercase {
+  text-transform: uppercase;
+}
+
+%grade-display-none {
+  display: none;
+}
+
+//
+// FONTS
+//
+
+%grade-font-opensans-light {
+  font-family: opensans-light, Arial ,sans-serif;
+  font-weight: 100;
+}
+
+%grade-font-opensans {
+  font-family: opensans-regular, Arial ,sans-serif;
+  font-weight: 400;
+}
+
+%grade-font-opensans-bold {
+  font-family: opensans-bold, Arial ,sans-serif;
+  font-weight: 700;
+}
+
+%grade-font-proximanova {
+  font-family: proximanova-regular, Arial, sans-serif;
+  font-weight: 400;
+}
+
+%grade-font-proximanova-bold {
+  font-family: proximanova-bold, Arial, sans-serif;
+  font-weight: 700;
+}

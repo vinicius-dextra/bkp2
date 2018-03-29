@@ -1,0 +1,115 @@
+.grade-regioes {
+    align-self: flex-end;
+    cursor: pointer;
+    display: none;
+    visibility: hidden;
+    width: 100%;
+    @include respond-to(large) {
+        width: 135px;
+        padding-right: 8px;
+        display: block;
+    }
+
+    &-open {
+        .grade-regioes-label {
+            i.gui-button-accordion-arrow {
+                transform: rotate(180Deg);
+                line-height: 16px;
+            }
+        }
+
+        .grade-regioes-dropdown {
+            @include respond-to(large) {
+                border: solid 1px #ccc;
+                max-height: 200px; /* approximate max height */
+                transition-property: all;
+                transition-duration: 1s;
+                transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+            }
+        }
+    }
+
+    select {
+        font-size: 50px;
+        height: 25px;
+        max-width: 134px;
+        opacity: 0;
+        position: absolute;
+        width: auto;
+        @include respond-to(large) {
+            display: none;
+        }
+    }
+
+    &-label {
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        display: inline-flex;
+        padding: 0 0.2rem;
+        padding-bottom:1rem;
+        @include respond-to(large) {
+            float: right;
+        }
+        span {
+            @extend %grade-font-proximanova-bold;
+            display: block;
+            float: left;
+            font-size: 0.875rem;
+        }
+        i.gui-button-accordion-arrow {
+            float: left;
+            height: 1rem;
+            line-height: 19px;
+            margin-left: 0.5rem;
+            top:0px;
+        }
+    }
+
+    &-dropdown {
+        @extend %grade-font-opensans;
+        @include ritmo-font-size(0.875rem, 5);
+        background: #ffffff;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+        display: none;
+        letter-spacing: 0.02rem;
+        min-width: 163px;
+        position:absolute;
+        right:0;
+        text-align: left;
+        text-transform: none;
+        top:75px;
+        width: auto;
+        z-index:11;
+        @include respond-to(large) {
+            display: block;
+            max-height: 0;
+            overflow-y: hidden;
+        }
+        ul {
+            display: block;
+        }
+        ul > li {
+            cursor: pointer;
+            display: block;
+            a {
+                color:#333;
+                display: block;
+                padding: 7px 12px;
+                &:hover {
+                    @extend %grade-font-opensans-bold;
+                    background-color: #f2f2f2;
+                }
+            }
+            &:first-child {
+                a {
+                    padding-top:0.75rem;
+                }
+            }
+            &:last-child {
+                a {
+                    padding-bottom:0.75rem;
+                }
+            }
+        }
+    }
+}

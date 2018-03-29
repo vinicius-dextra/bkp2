@@ -1,0 +1,121 @@
+.schedule-item {
+	@extend %grade-font-opensans;
+	background: #f9f9f9;
+	border-bottom: solid 1px #eeeeee;
+	transition: background 1s linear;
+
+	> .row > .column {
+		position: relative;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		@extend %grade-display-none;
+	}
+
+	h2,
+	h4 {
+		@extend %grade-font-opensans;
+	}
+
+	h2,
+	h3,
+	time {
+		@include ritmo-font-size(1rem, 5);
+	}
+
+	h2 {
+		padding: 0 1em;
+	}
+
+	h3 {
+		@extend %grade-font-opensans-bold;
+		@include ritmo-bottom-margin(4, 1rem);
+	}
+
+	h4 {
+		$_font-size: 12px;
+
+		@extend %grade-font-proximanova-bold;
+		@extend %grade-text-transform-uppercase;
+
+		@include ritmo-font-size($_font-size);
+		@include small-only() {
+			margin-top: 1.875rem;
+		}
+	}
+
+	dl {
+		color: #333;
+
+		@include large-up() {
+			@include right-container();
+		}
+	}
+
+	dt,
+	dd {
+		display: inline;
+	}
+
+	dt {
+		@extend %grade-font-opensans-bold;
+
+		@include ritmo-font-size($font-size);
+
+		&::before {
+			@include ritmo-top-margin(2, $font-size);
+			clear: both;
+			content: " ";
+			display: table;
+		}
+
+		&::after {
+			content: ":";
+		}
+	}
+
+	dd {
+		@extend %grade-font-opensans;
+		@include ritmo-font-size($font-size);
+
+		&::before {
+			content: " ";
+		}
+	}
+
+	time {
+		@extend %grade-font-opensans-light;
+	}
+
+	label {
+		cursor: pointer;
+		@extend %grade-font-proximanova-bold;
+	}
+
+	img {
+		border-radius: 3px;
+	}
+
+	&--open {
+		background: #f2f2f2;
+		transition: background 1s linear;
+
+		.grade-header-info {
+			h2 {
+				overflow: visible;
+				white-space: normal;
+			}
+		}
+	}
+
+	&-wrapper {
+		@include medium-down() {
+			margin-right: 0.75rem;
+		}
+	}
+
+	&-inner {
+		position:relative;
+	}
+}

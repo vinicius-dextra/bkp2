@@ -1,0 +1,13 @@
+.schedule-wrapper {
+    @include ritmo-font-size($font-size);
+    letter-spacing: -0.03em;
+    @include large-up() {
+        margin-top: -2.5rem;
+    }
+
+    .schedule-items {
+        &--fixed-ruler {
+            margin-top: 81px;
+        }
+    }
+}

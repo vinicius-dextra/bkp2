@@ -1,0 +1,97 @@
+.schedule-item-header {
+	height: 4.125rem;
+	@include ritmo($padding-leader: 5.25, $font-size: $font-size);
+	margin: 0;
+	display: flex;
+	align-items: center;
+
+	* + * {
+		@extend %grade-font-opensans-bold;
+	}
+
+	// seta
+	&::after {
+		font-family: "gui-icon";
+		content: "\f102";
+		color: #aaa;
+		display: inline-block;
+		float: right;
+		transform: rotateZ(0deg);
+		transition: transform 500ms cubic-bezier(0.46, 0.03, 0.52, 0.96);
+	}
+
+	// toggle
+	[name="grade-toggle"]:checked ~ label &::after {
+		transform: rotateZ(-180deg);
+	}
+
+	&-logo {
+		@include large-up() {
+			background-size: cover !important;
+			display: inline-block;
+			float: left;
+			height: 40px;
+			width: 40px;
+			margin-right: 30px;
+			border: 1px solid #eee;
+			border-radius: 3px;
+		}
+
+		display: none;
+	}
+
+	&-info {
+		display: flex;
+		padding-right:5%;
+		width: 96%;
+
+		h2 {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		&-extended {
+			display: inline;
+
+			@include small-only() {
+				display: none;
+			}
+
+			span {
+				@extend %grade-font-opensans;
+			}
+		}
+
+	}
+
+	&--circle {
+		font-size: 10px;
+		vertical-align: bottom;
+		margin: 0 10px;
+	}
+
+	&-time,
+	&-live-target {
+	  display: none;
+  
+	  &--visible {
+		display: block;
+	  }
+	}
+  
+	&-live-target {
+	  @extend %grade-font-proximanova-bold;
+	  background: #C51901;
+	  border-radius: 3px;
+	  color: #ffffff;
+	  letter-spacing: -0.03em;
+	  text-transform: uppercase;
+  
+	  span {
+		@include ritmo-font-size(12px);
+		padding: .25em .3em .1em .3em;
+		white-space: nowrap;
+	  }
+	}
+}

@@ -1,0 +1,222 @@
+@import "utilities/**/*";
+@import "layout/**/*";
+@import "components/**/*";
+
+b {
+  font-weight: 700;
+}
+
+.grade {
+  &-items {
+    &__fixed-ruler {
+      margin-top: 81px;
+    }
+  }
+
+  &-confronto {
+    //percentual da largura do logo em relação à todo container
+    $logo-width: 27.03%;
+    //percentual da altura do logo em relação à todo container
+    $logo-height: 51.05%;
+    $x-icon-width: 14px;
+    $x-side-padding: 8%;
+
+    background: #ffffff;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: calc((9 / 16) * 100%);// 16:9
+    margin-bottom: 1rem;
+    position: relative;
+    text-align:center;
+    width:100%;
+
+    @include large-up() {
+      @include left-container();
+      padding-bottom: calc((9 / 16) * 30%);// 16:9
+    }
+    @include medium-down() {
+      width: 100%;
+    }
+
+    &-wrapper {
+      display: flex;
+      // calculo para ajustar posicionamento dinamicamente. Divide por 2, pois devemos considerar o left e right.
+      // left: calc(((100% - ((#{$logo-width} * 2) + (#{$x-side-padding} * 2))) / 2) - (#{$x-icon-width} / 2));
+      position: absolute;
+      // calculo para ajustar posicionamento dinamicamente. Divide por 2, pois devemos considerar o top e bottom.
+      top: calc(#{$logo-height} / 2);
+      width: 100%;
+    }
+
+    &-versus {
+      padding-left:$x-side-padding;
+      padding-right:$x-side-padding;
+      padding-top: 11%;
+      padding-bottom: 12%;
+    }
+
+    &-thumb {
+      width:$logo-width;
+
+      a {
+        display: block;
+        overflow: hidden;
+      }
+
+      img {
+        height: auto;
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: 150px;
+      }
+    }
+  }
+
+  &-toggle {
+    ~ .grade-scope-pracas {
+      display: none;
+      position: absolute;
+      right: 60px;
+      top: 1.25rem;
+
+      @include large-up() {
+        display: flex;
+      }
+    }
+  }
+
+  &-praca {
+    display:none;
+    &-sp {
+      display:block;
+    }
+  }
+
+  &-more {
+    @include ritmo-top-margin(2);
+
+    @include large-up() {
+        @include ritmo-top-margin(0);
+    }
+
+    clear: both;
+
+    a {
+      @extend %grade-text-transform-uppercase;
+      @extend %grade-font-proximanova-bold;
+      @include ritmo-font-size(12px);
+
+      i {
+        margin-left: 4px;
+        top: 1px;
+        position: relative;
+        font-size:10px;
+      }
+    }
+  }
+
+  &-attrac-tecinfo {
+    @include small-only(){
+      max-height: 19px;
+      margin-bottom: 16px;
+    }
+
+    * {
+      background: url('../img/hd-cc-sap-ad-sprite.png') no-repeat scroll 0 0 transparent;
+      display: inline-block;
+      height: 19px;
+      width:26px;
+      @include large-up() {
+        @include ritmo-bottom($lines: 6);
+      }
+      @include respond-to(small) {
+        margin-right: 9px;
+      }
+    }
+
+    &--hd {
+      background-position:0px;
+    }
+
+    &--sap {
+      background-position:-50px;
+    }
+
+    &--cc {
+      background-position:-25px;
+    }
+
+    &--ad {
+      background-position:-75px;
+    }
+  }
+
+  &-error {
+    @extend %grade-font-opensans;
+    color:#666;
+
+    h2, p {
+      text-align: center;
+    }
+
+    h2 {
+      @include ritmo-font-size(18px);
+      @include ritmo-bottom($lines: 3);
+
+      @include large-up() {
+        @include ritmo-font-size(24px);
+      }
+    }
+
+    &-icon {
+      text-align: center;
+      @include ritmo-top($lines: 10.5);
+      @include ritmo-bottom($lines: 6);
+
+      @include large-up() {
+        @include ritmo-top($lines: 15);
+        @include ritmo-bottom($lines: 9);
+      }
+
+      span {
+        @include large-up() {
+          height: 52px;
+          width: 102px;
+        }
+
+        background: url('../img/erro-icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: inline-block;
+        height: 44px;
+        width: 86px;
+      }
+    }
+
+    &-sorry {
+      float: none;
+      margin-left:auto;
+      margin-right:auto;
+      max-width: 480px;
+
+      p {
+        @include ritmo-font-size(14px);
+        @include ritmo-bottom($lines: 8);
+        @include large-up() {
+          @include ritmo-font-size(16px);
+        }
+      }
+    }
+
+    &-retry {
+      @extend %grade-font-proximanova-bold;
+      @include ritmo-font-size(12px);
+
+      background: transparent;
+      border: none;
+      cursor:pointer;
+      text-transform: uppercase;
+    }
+  }
+}

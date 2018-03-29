@@ -1,0 +1,97 @@
+.schedule-item-content {
+    display: none;
+    overflow: auto;
+    padding-bottom: 1.5rem;
+
+    @include large-up() {
+        padding-left: 4.5rem;
+
+        h3 {
+            display: none;
+        }
+    }
+
+    &-info {
+        @include large-up() {
+            margin-right: 20%;
+            max-width: 600px;
+        }
+
+        &-preview {
+            $_font-size: 1rem;
+            @extend %grade-font-opensans-bold;
+            @include ritmo-font-size($_font-size, 5);
+            @include ritmo-bottom-margin(2, $_font-size);
+        }
+
+        &-summary {
+            @include ritmo($leader: 2, $font-size: $font-size);
+            @include large-up() {
+                @include ritmo-bottom($lines: 4, $font-size: $font-size);
+            }
+        
+            margin-top: 0;
+        }
+    }
+
+    &-info--has-thumb {
+        @include large-up() {
+            @include right-container();
+        }
+    }
+
+    // &-thumb {
+    //     @include large-up() {
+    //         @include left-container();
+    //     }
+    //     @include medium-down() {
+    //         width: 100%;
+    //     }
+    // }
+
+    // Creating Intrinsic Ratios for Video
+    // http://alistapart.com/article/creating-intrinsic-ratios-for-video
+    &-thumb {
+        height: 0;
+        overflow: hidden;
+        padding-bottom: 56.25%; // 16:9
+        margin-bottom: 1rem;
+        position: relative;
+
+        &:hover {
+            background: rgba(0,0,0,1) 100%;
+        }
+
+        div.gui-icon-play1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            z-index: 2;
+            color: #fff;
+            opacity: 0.8;
+            text-shadow: 0 0 4px rgba(51,51,51,0.6);
+            transition: opacity 0.5s;
+        }
+
+        img {
+            height: auto;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: #e8e8e8;
+            animation: loading 5s infinite;
+            &:hover {
+            opacity: 0.85;
+            }
+        }
+        @keyframes loading {
+            0%   {background: #e8e8e8;}
+            25%  {background: #e0e0e0;}
+            50%   {background: #e8e8e8;}
+            75%  {background: #e0e0e0;}
+        }
+    }
+}

@@ -1,0 +1,97 @@
+.grade-regua {
+    @extend %grade-font-proximanova-bold;
+    @extend %grade-text-transform-uppercase;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+    transform: translate3d(0px,0px,0px); // Propriedade para fazer com que a regua nao pisque quando muda a position
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    @include large-up() {
+        transition: top 0.3s linear;
+    }
+
+    &__fixed {
+        background-color: #fff;
+        position: fixed;
+        top: 0;
+        // media querie fora dos padroes de grid pq o header da globo fixa a partir
+        // desta resolução
+        @media (min-width: 1065px) {
+            top: 86px;
+            transition: top 0.3s linear;
+        }
+
+        .grid-ruler-container {
+            padding-top: 1.1rem;
+            padding-bottom: 1.1rem;
+        }
+
+        .grade-regioes {
+            @include medium-down() {
+                width: 100%;
+            }
+
+            .grade-regioes-dropdown {
+                top:62px;
+            }
+        }
+    }
+
+    &-container {
+        @include respond-to(large) {
+            display: flex;
+        }
+        position: relative;
+    }
+}
+
+.grid-ruler {
+    position: relative;
+    @include large-down() {
+        left: 50%;
+        max-width: 360px;
+        transform: translate(-50%, 0);
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    @include respond-to(large) {
+        padding-left: 134px;
+    }
+
+    &-container {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        @include respond-to(large) {
+            flex-grow: 1;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .gui-icon {
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        padding: 0 0.5em;
+
+        &--disabled {
+            cursor: not-allowed;
+            pointer-events: none;
+            color: #e1e1e1;
+        }
+    }
+
+    p {
+        display: inline-block;
+        vertical-align: text-bottom;
+        @include respond-to(large) {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+}

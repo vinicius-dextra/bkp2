@@ -1,0 +1,149 @@
+$breakpoints: (
+    small: 0,
+    medium: 620px,
+    large: 1000px,
+    xlarge: 1200px,
+    xxlarge: 1360px,
+);
+
+$one-pixel:1px;
+
+// Breakpoints ranges
+$small-max: map-get($breakpoints, "medium") - $one-pixel;
+
+$medium-min: map-get($breakpoints, "small");
+$medium-max: map-get($breakpoints, "medium") - $one-pixel;
+
+$large-min: map-get($breakpoints, "medium");
+$large-max: map-get($breakpoints, "large") - $one-pixel;
+
+$xlarge-min: map-get($breakpoints, "large");
+$xlarge-max: map-get($breakpoints, "xlarge") - $one-pixel;
+
+$xxlarge-min: map-get($breakpoints, "xlarge");
+
+@mixin respond-to($breakpoint) {
+  @warn "respond-to mixin is deprecated and will be removed in the next major version release";
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+                + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+@mixin small-only() {
+    @media only screen and (max-width: $small-max) {
+        @content;
+    }
+}
+
+@mixin small-only-landscape() {
+    @media only screen and (max-width: $small-max) and #{$landscape} {
+        @content;
+    }
+}
+
+@mixin small-only-portrait() {
+    @media only screen and (max-width: $small-max) and #{$portrait} {
+        @content;
+    }
+}
+
+@mixin medium-up() {
+    @media only screen and (min-width: $medium-min) {
+        @content;
+    }
+}
+
+@mixin medium-up-landscape() {
+    @media only screen and (min-width: $medium-min) and #{$landscape} {
+        @content;
+    }
+}
+
+@mixin medium-up-portrait() {
+    @media only screen and (min-width: $medium-min) and #{$portrait} {
+        @content;
+    }
+}
+
+@mixin medium-down() {
+    @media only screen and (max-width: $medium-max) {
+        @content;
+    }
+}
+
+@mixin medium-down-landscape() {
+    @media only screen and (max-width: $medium-max) and #{$landscape} {
+        @content;
+    }
+}
+
+@mixin medium-down-portrait() {
+    @media only screen and (max-width: $medium-max) and #{$portrait} {
+        @content;
+    }
+}
+
+@mixin medium-only() {
+    @media only screen and (min-width: $medium-min) and (max-width: $medium-max) {
+        @content;
+    }
+}
+
+@mixin medium-only-landscape() {
+    @media only screen and (min-width: $medium-min) and (max-width: $medium-max) and #{$landscape} {
+        @content;
+    }
+}
+
+@mixin medium-only-portrait() {
+    @media only screen and (min-width: $medium-min) and (max-width: $medium-max) and #{$portrait} {
+        @content;
+    }
+}
+
+@mixin large-up() {
+    @media only screen and (min-width: $large-min) {
+        @content;
+    }
+}
+
+@mixin large-down() {
+    @media only screen and (max-width: $large-max) {
+        @content;
+    }
+}
+
+@mixin large-only() {
+    @media only screen and (min-width: $large-min) and (max-width: $large-max) {
+        @content;
+    }
+}
+
+@mixin xlarge-up() {
+    @media only screen and (min-width: $xlarge-min) {
+        @content;
+    }
+}
+
+@mixin xlarge-only() {
+    @media only screen and (min-width: $xlarge-min) and (max-width: $xlarge-max) {
+        @content;
+    }
+}
+
+@mixin xxlarge-up() {
+    @media only screen and (min-width: $xxlarge-min) {
+        @content;
+    }
+}
+
+@mixin xxlarge-only() {
+    @media only screen and (min-width: $xxlarge-min) {
+        @content;
+    }
+}

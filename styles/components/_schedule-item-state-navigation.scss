@@ -1,0 +1,36 @@
+.schedule-item-state-navigation {
+	display: flex;
+	text-transform: uppercase;
+	margin-bottom: 1.2rem;
+
+	ul {
+		width: 100%;
+
+		li {
+			color:#000;
+			$_font-size: 12px;
+			$_padding:ritmo(4, $font-size: $_font-size);
+			@extend %grade-font-proximanova-bold;
+			@include ritmo-font-size($_font-size, $from-size: $font-size);
+			@include ritmo(0, 1);
+			flex-grow: 1;
+			padding-left: $_padding;
+			padding-right: $_padding;
+			border-bottom-width: 1px;
+			border-style: solid;
+			border-color: #d8d8d8;
+
+			&:first-child {
+				border-left-color: #d8d8d8;
+			}
+
+			&.activated {
+				border-bottom-width: 2px;
+			}
+		}
+	}
+
+	@include large-up() {
+		display: none;
+	}
+}
